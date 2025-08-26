@@ -29,4 +29,5 @@ class SpaceAI:
         }
         with open("user_credentials.json", "w") as file:
             json.dump(user_credientials, file)
+        print("User credentials saved")
         
