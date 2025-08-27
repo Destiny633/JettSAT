@@ -46,7 +46,7 @@ class SpaceAI:
             for i in range(0, len(lines), 2):
                 if lines[i].strip() == question:
                     print(lines[i+1].strip())
-                    return lines[i+1].strip()
+                    return
 
 
      
