@@ -4,7 +4,7 @@ import json
 
 
 ## SpaceAI class to handle user credentials and save them to a file
-class SpaceAI:
+class SpaceAI_login:
     def __init__(self):
         self.username = None
         self.password = None
@@ -30,4 +30,21 @@ class SpaceAI:
         with open("user_credentials.json", "w") as file:
             json.dump(user_credientials, file)
         print("User credentials saved")
+
+
+
+class SpaceAI:
+    def __init__(self):
+        self.ask_question = None
+
+    
+    def ask_question(self):
+        question = input(" please enter the question you would like to ask? ")
+        
+
+
+
+
+
+
         
