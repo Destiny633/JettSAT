@@ -41,12 +41,22 @@ class SpaceAI:
     def ask_question(self):
         question = input(" please enter the question you would like to ask? ")
         ## check if the question has an answer Questions_Answers.txt
-        with open("Questions_Answers.txt", "r") as file:
-            lines = file.readlines()
-            for i in range(0, len(lines), 2):
-                if lines[i].strip() == question:
-                    print(lines[i+1].strip())
-                    return
+        try:    
+            with open("Questions_Answers.txt", "r") as file:
+                lines = file.readlines()
+                for i in range(0, len(lines), 2):
+                    if lines[i].strip() == question:
+                        print(lines[i+1].strip())
+                        return
+            print("Sorry, I don't have an answer for that question.")
+        except FileNotFoundError:
+            print("Questions_Answers.txt file not found.")
+                
+    
+        
+                
+
+
 
 
      
