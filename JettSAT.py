@@ -51,6 +51,13 @@ class SpaceAI:
             print("Sorry, I don't have an answer for that question.")
         except FileNotFoundError:
             print("Questions_Answers.txt file not found.")
+
+    def add_question_answer(self):
+        question = input("what question would you like to add? ")
+        answer = input("what is the answer to that question? ")
+        with open("Questions_answers.txt", "a") as file:
+            file.write(f"{question}\n{answer}\n")
+        print("Question and answer added.")
                 
     
         
