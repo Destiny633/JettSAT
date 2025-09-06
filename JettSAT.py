@@ -60,6 +60,21 @@ class SpaceAI:
                         print("Answer:", lines[i+1].strip())
                         found = True 
                         break
+            if not found:
+                print("Sorry, i dont have an answer for that question.")
+                add_answer = input("Would you like to add an answer for this question? (yes/no): ")
+                if add_answer.lower() == "yes":
+                    answer = input("Please enter the answer to this question: ")
+                    with open("Questions_Answers.txt", "a") as file:
+                        file.write(question + "\n")
+                        file.write(answer + "\n")
+                    print("Question and answer have been added.")
+                else:
+                    print("question and answer will not be added.")
+        except FileNotFoundError:
+                print("Questions_Answers.txt file not found. Please create the file first.")
+
+
             
 
         
