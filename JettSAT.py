@@ -87,10 +87,17 @@ if __name__ == "__main__":
     while True:
         ## creates the text file before asking anyhting and going to the menu 
         space_ai.create_text_file(filename, content="") 
+        choice = input("Please choose an option from the menu (1-3): ")
         print("\nMenu:")
         print("1. Ask a question")
-        print("2. Add a question and answer")
-        print("3. Exit")
+        print("2. Exit")
+        if choice == "1":
+            space_ai.ask_question()
+        elif choice == "2":
+            print("Thank you for using SpaceAI. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
         
 
 
