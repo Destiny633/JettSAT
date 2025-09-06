@@ -87,6 +87,11 @@ if __name__ == "__main__":
     while True:
         ## creates the text file before asking anyhting and going to the menu 
         space_ai.create_text_file(filename, content="") 
+        print("\nMenu:")
+        print("1. Ask a question")
+        print("2. Add a question and answer")
+        print("3. Exit")
+        
 
 
 
