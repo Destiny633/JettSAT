@@ -73,8 +73,14 @@ class SpaceAI:
                 
         
     
-        
-                
+if __name__ == "__main__":
+    print("Welcome to SpaceAI!")
+    print("Please login to continue.")
+    login = SpaceAI_login()
+    username = login.Get_Username()
+    password = login.Get_Password()
+    login.Save_User_Info()
+
 
 
 
