@@ -50,27 +50,18 @@ class SpaceAI:
 ## by reading the Questions_Answers.txt file    
     def ask_question(self):
         question = input(" please enter the question you would like to ask? ")
+        found = False
         ## check if the question has an answer Questions_Answers.txt
         try:    
             with open("Questions_Answers.txt", "r") as file:
                 lines = file.readlines()
                 for i in range(0, len(lines), 2):
                     if lines[i].strip() == question:
-                        print(lines[i+1].strip())
-                        return
-            print("Sorry, I don't have an answer for that question.")
-        except FileNotFoundError:
-            print("Questions_Answers.txt file not found.")
-## this method below happens after the user asks a question and there is no answer
-## it allows the user to add a question and answer to the Questions_Answers.txt file
-## and it appends the question and answer to the file
-    def add_question_answer(self):
-        question = input("what question would you like to add? ")
-        answer = input("what is the answer to that question? ")
-        with open("Questions_answers.txt", "a") as file:
-            file.write(f"{question}\n{answer}\n")
-        print("Question and answer added.")
-                
+                        print("Answer:", lines[i+1].strip())
+                        found = True 
+                        break
+            
+
         
     
 if __name__ == "__main__":
@@ -87,7 +78,7 @@ if __name__ == "__main__":
     while True:
         ## creates the text file before asking anyhting and going to the menu 
         space_ai.create_text_file(filename, content="") 
-        choice = input("Please choose an option from the menu (1-3): ")
+        choice = input("Please choose an option from the menu (1-2): ")
         print("\nMenu:")
         print("1. Ask a question")
         print("2. Exit")
