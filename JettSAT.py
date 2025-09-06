@@ -42,9 +42,9 @@ class SpaceAI:
 ## this method creates a text file with the given filename and content        
 
     def create_text_file(self, filename, content=""):
-        with open(filename, "w") as file:
+        with open("Questions_Answers.txt", "w") as file:
             file.write(content)
-        print("Text file created.")
+        
     
 ## this method asks the user a questions and checks if the question has an answer
 ## by reading the Questions_Answers.txt file    
@@ -80,6 +80,13 @@ if __name__ == "__main__":
     username = login.Get_Username()
     password = login.Get_Password()
     login.Save_User_Info()
+
+
+    space_ai = SpaceAI()
+    filename = "Questions_Answers.txt"
+    while True:
+        ## creates the text file before asking anyhting and going to the menu 
+        space_ai.create_text_file(filename, content="") 
 
 
 
