@@ -32,14 +32,15 @@ class SpaceAI_login:
         print("User credentials saved")
 
 
-
+## this is the main class that handles the functionality of the program for the SpaceAI
+## by creating methods to ask questions and create text files
 class SpaceAI:
     def __init__(self):
         self.ask_question = None
-        self.add_question_answer = None
         self.create_text_file = None
 
-## this method creates a text file with the given filename and content        
+## this method creates a text file with the given filename and content  
+# using the with open method to create the file and write the content to it      
 
     def create_text_file(self, filename, content=""):
         with open("Questions_Answers.txt", "w") as file:
@@ -51,7 +52,9 @@ class SpaceAI:
     def ask_question(self):
         question = input(" please enter the question you would like to ask? ")
         found = False
-        ## check if the question has an answer Questions_Answers.txt
+        ## check if the question has an answer Questions_Answers.txt file
+        ## by checking if it's in the file by reading the file line by line
+        ## then if the question is found it prints the answer
         try:    
             with open("Questions_Answers.txt", "r") as file:
                 lines = file.readlines()
@@ -60,6 +63,9 @@ class SpaceAI:
                         print("Answer:", lines[i+1].strip())
                         found = True 
                         break
+                    ## this function below asks to input the answer into a file if the question is not found
+                    ## it appends the question and answer to the file
+                    ## if the user does not want to add the question and answer it will not be added
             if not found:
                 print("Sorry, i dont have an answer for that question.")
                 add_answer = input("Would you like to add an answer for this question? (yes/no): ")
@@ -78,7 +84,8 @@ class SpaceAI:
             
 
         
-    
+## this is the main function that runs the program and displays the menu
+
 if __name__ == "__main__":
     print("Welcome to SpaceAI!")
     print("Please login to continue.")
@@ -87,7 +94,10 @@ if __name__ == "__main__":
     password = login.Get_Password()
     login.Save_User_Info()
 
-
+## creates an instance of the SpaceAI class and displays the menu
+## the menu has two options ask a question or exit the program
+## if the user chooses to ask a question it calls the ask_question method
+## if the user chooses to exit the program it breaks the loop and exits
     space_ai = SpaceAI()
     filename = "Questions_Answers.txt"
     while True:
