@@ -9,13 +9,13 @@ class SpaceAI_login:
         self.username = None
         self.password = None
 
-## Methods to get users username asks for for username and stores it in the class variable
+## Methods to get users username and store it
     def Get_Username(self):
         ('''the Get_Username method asks for the username of the user and stores it in the class variable self.username''')
         username = input("Please enter your username: ")
         self.username = username
         return self.username
-    ## Method to get users password asks for password and stores it in the class variable
+    ## Method to get users password and store it
     def Get_Password(self):
         ('''the Get_Password method asks for the password of the user and stores it in the class variable self.password''')
         password = input("Please enter your password: ")
@@ -35,14 +35,12 @@ class SpaceAI_login:
 
 
 ## this is the main class that handles the functionality of the program for the SpaceAI
-## by creating methods to ask questions and create text files
 class SpaceAI:
     def __init__(self):
         self.ask_question = None
         self.create_text_file = None
 
-## this method creates a text file with the given filename and content  
-# using the with open method to create the file and write the content to it      
+## this method creates a text file with the name Questions_Answers.txt for data to be saved too     
 
     def create_text_file(self, filename, content=""):
         ('''the create_text_file method creates a new text file with the given name Questions_Answers.txt and writes the content to it''')
@@ -50,8 +48,7 @@ class SpaceAI:
             file.write(content)
         
     
-## this method asks the user a questions and checks if the question has an answer
-## by reading the Questions_Answers.txt file    
+## this method is the main method that handles asking questions and saving answers to the file   
     def ask_question(self):
         question = input(" please enter the question you would like to ask? ")
         found = False
