@@ -8,22 +8,25 @@ class SpaceAI_login:
     def __init__(self):
         self.username = None
         self.password = None
+        self.get_username = None
+        self.get_password = None
+        self.save_user_info = None
 
 ## Methods to get users username and store it
-    def Get_Username(self):
+    def get_username(self):
         ('''the Get_Username method asks for the username of the user and stores it in the class variable self.username''')
         username = input("Please enter your username: ")
         self.username = username
         return self.username
     ## Method to get users password and store it
-    def Get_Password(self):
+    def get_password(self):
         ('''the Get_Password method asks for the password of the user and stores it in the class variable self.password''')
         password = input("Please enter your password: ")
         self.password = password
         return self.password
     
     ## the file is so users can login later without having to enter their credentials again
-    def Save_User_Info(self):
+    def save_user_info(self):
         ('''the Save_User_Info method creates a dictionary with the username and password and saves it to a file called "user_credentials.json"''')
         user_credientials = {
             "username": self.username,
