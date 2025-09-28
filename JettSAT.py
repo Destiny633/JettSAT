@@ -1,7 +1,4 @@
-
-
 import json
-
 
 ## SpaceAI class to handle user credentials and save them to a file
 class SpaceAI_login:
@@ -15,15 +12,32 @@ class SpaceAI_login:
 ## Methods to get users username and store it
     def get_username(self):
         ('''the Get_Username method asks for the username of the user and stores it in the class variable self.username''')
-        username = input("Please enter your username: ")
-        self.username = username
-        return self.username
+        while True:
+            username = input("Please enter your username: ")
+            if not isinstance(username, str) or not username.strip():
+                print("Invalid username. Please enter a valid string.")
+            else:
+                self.username = username
+                if self.username is not None:
+                    print(f"Welcome, {self.username}!")
+                else:
+                    print("username doesn't exist")
+                return self.username
+
     ## Method to get users password and store it
     def get_password(self):
         ('''the Get_Password method asks for the password of the user and stores it in the class variable self.password''')
-        password = input("Please enter your password: ")
-        self.password = password
-        return self.password
+        while True:
+            password = input("Please enter your password: ")
+            if not isinstance(password, str) or not password.strip():
+                print("Invalid password. Please enter a valid string.")
+            else:
+                self.password = password
+                if self.password is not None:
+                    print("Password accepted")
+                else:
+                    print("password doesn't exist")
+                return self.password
     
     ## the file is so users can login later without having to enter their credentials again
     def save_user_info(self):
@@ -44,16 +58,31 @@ class SpaceAI:
         self.create_text_file = None
 
 ## this method creates a text file with the name Questions_Answers.txt for data to be saved too     
-
     def create_text_file(self, filename, content=""):
         ('''the create_text_file method creates a new text file with the given name Questions_Answers.txt and writes the content to it''')
+        # Input validation for filename and content
+        if not isinstance(filename, str) or not filename.strip():
+            print("Invalid filename. Please enter a valid string.")
+            return
+        if not isinstance(content, str):
+            print("Invalid content. Please enter a valid string.")
+            return
         with open("Questions_Answers.txt", "w") as file:
             file.write(content)
+            if self.create_text_file is not None:
+                print(f"{filename} created successfully.")
+            else:
+                print("file does not exist.")
         
     
 ## this method is the main method that handles asking questions and saving answers to the file   
     def ask_question(self):
-        question = input(" please enter the question you would like to ask? ")
+        while True:
+            question = input(" please enter the question you would like to ask? ")
+            if not isinstance(question, str) or not question.strip():
+                print("Invalid question. Please enter a valid string.")
+            else:
+                break
         found = False
         ('''the ask_question method reads the Questions_Answers.txt file and checks if the question has an answer
         by reading the file line by line and checking if the question is in the file and if the question is found it will print the answer''')
@@ -72,9 +101,19 @@ class SpaceAI:
             
             if not found:
                 print("Sorry, i dont have an answer for that question.")
-                add_answer = input("Would you like to add an answer for this question? (yes/no): ")
+                while True:
+                    add_answer = input("Would you like to add an answer for this question? (yes/no): ")
+                    if add_answer.lower() not in ["yes", "no"]:
+                        print("Please enter 'yes' or 'no'.")
+                    else:
+                        break
                 if add_answer.lower() == "yes":
-                    answer = input("Please enter the answer to this question: ")
+                    while True:
+                        answer = input("Please enter the answer to this question: ")
+                        if not isinstance(answer, str) or not answer.strip():
+                            print("Invalid answer. Please enter a valid string.")
+                        else:
+                            break
                     with open("Questions_Answers.txt", "a") as file:
                         file.write(question + "\n")
                         file.write(answer + "\n")
@@ -95,9 +134,9 @@ if __name__ == "__main__":
     print("Welcome to SpaceAI!")
     print("Please login to continue.")
     login = SpaceAI_login()
-    username = login.Get_Username()
-    password = login.Get_Password()
-    login.Save_User_Info()
+    username = login.get_username()
+    password = login.get_password()
+    login.save_user_info()
 
 ('''after the user has logged in they will be taken to the menu where they can choose to ask a question or exit the program
 if the user selects ask question the program will call the ask_question method
@@ -108,7 +147,12 @@ filename = "Questions_Answers.txt"
 while True:
     ## creates the text file before asking anyhting and going to the menu 
     space_ai.create_text_file(filename, content="") 
-    choice = input("Please choose an option from the menu (1-2): ")
+    while True:
+        choice = input("Please choose an option from the menu (1-2): ")
+        if choice not in ["1", "2"]:
+            print("Invalid choice. Please enter 1 or 2.")
+        else:
+            break
     print("\nMenu:")
     print("1. Ask a question")
     print("2. Exit")
@@ -119,21 +163,20 @@ while True:
         break
     else:
         print("Invalid choice. Please try again.")
-        
-
-
-
-
-
-     
-
-        
-
-        
 
 
 
 
 
 
-        
+
+
+
+
+
+
+
+
+
+
+
